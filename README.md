@@ -10,3 +10,6 @@
 
 ## 기초세팅
  -> healthcheck 컨트롤러, http 파일 사용해서 테스트 ( env 세팅 )
+
+## 껍데기 만들기
+ -> circulateBmiQuery 컨트롤러, 파라미터를 위한 enum 클래스 생성, http파일로 테스트 확인
