@@ -16,3 +16,6 @@
  
 ## policy and rule
  -> 실제 구현부분 파트 1
+
+## policy and rule finish
+-> 실제 구현부분 파트 2 완료!
