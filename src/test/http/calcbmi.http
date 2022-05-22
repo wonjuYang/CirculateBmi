@@ -4,3 +4,11 @@ GET {{host}}/api/calc/bmi?genderType=MAN&height=180&weight=65
 
 ### BMI 계산
 GET {{host}}/api/calc/bmi?genderType=WOMAN&height=170&weight=60
+
+
+### BMI 계산 with personId
+GET {{host}}/api/calc/person/1?genderType=MAN
+
+
+### BMI 계산 with personId
+GET {{host}}/api/calc/person/1?genderType=WOMAN

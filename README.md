@@ -22,3 +22,7 @@
 
 ## add comment
 -> 어떤 일을 하는 클래스인지 주석 추가
+
+
+## add Entity
+-> 객체를 사용해서 PersonId로 키, 몸무게 받아오기

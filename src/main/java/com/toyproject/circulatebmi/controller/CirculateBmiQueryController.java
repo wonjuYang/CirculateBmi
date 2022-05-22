@@ -1,9 +1,14 @@
 package com.toyproject.circulatebmi.controller;
 
 import com.toyproject.circulatebmi.constants.GenderType;
+import com.toyproject.circulatebmi.policy.BmiPolicy;
+import com.toyproject.circulatebmi.policy.BmiPolicyFactory;
 import com.toyproject.circulatebmi.policy.ManBmipolicy;
 import com.toyproject.circulatebmi.policy.WomanBmipolicy;
+import com.toyproject.circulatebmi.service.PersonService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,24 +22,43 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
+@AllArgsConstructor
 public class CirculateBmiQueryController {
 
+    private final PersonService personService;
 
+    //여자야 남자야, 키, 몸무게 물어볼거고 나는 BMI지수와 정상인지 아닌지를 알려줄거야
     @GetMapping("api/calc/bmi")
     public String judgeBmi(@RequestParam GenderType genderType,
                          @RequestParam int height,
                          @RequestParam int weight) {
-        if (genderType == GenderType.MAN) {
-            ManBmipolicy policy = new ManBmipolicy();
-            return policy.judgeRange(height, weight);
-        } else if (genderType == GenderType.WOMAN) {
-            WomanBmipolicy policy = new WomanBmipolicy();
-            return policy.judgeRange(height, weight);
-        }
 
-        return null;
+        BmiPolicy policy = BmiPolicyFactory.of(genderType);
 
-        //여자야 남자야, 키, 몸무게 물어볼거고 나는 BMI지수와 정상인지 아닌지를 알려줄거야
+        float bmi = policy.calcualte(height, weight);
+        return policy.judgeRange(bmi);
+
+
+
 
     }
+
+    //특정 사람의 ID를 입력하면 그사람은 정상인지, 비만인지, 미달인지 알려주는 서비스
+    @GetMapping("/api/calc/person/{poserId}")
+    public String JudgeBmiByPersonId(@PathVariable Long persionId,
+                                     @RequestParam GenderType genderType){
+
+
+        BmiPolicy policy = BmiPolicyFactory.of(genderType);
+        int height = personService.getHeightOrThrow(persionId);
+        int weight = personService.getWeightOrThrow(persionId);
+        float bmi = policy.calcualte(height, weight);
+        return policy.judgeRange(bmi);
+    }
+
+
+
+
+
+
 }

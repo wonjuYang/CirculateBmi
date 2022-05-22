@@ -5,11 +5,13 @@ import lombok.AllArgsConstructor;
  * @author tripleJ
  *
  */
-@AllArgsConstructor
-public class BmiCalc {
+public interface BmiPolicy {
 
-    public float calcualte(int height, int weight){
+    public String judgeRange(float bmi);
+
+    default float calcualte(int height, int weight){
         return Double.valueOf((weight/((height*0.01)*(height*0.01)))).floatValue();
     }
+
 
 }
