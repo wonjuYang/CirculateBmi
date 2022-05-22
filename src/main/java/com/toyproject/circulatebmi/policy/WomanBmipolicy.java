@@ -3,7 +3,7 @@ package com.toyproject.circulatebmi.policy;
 import lombok.AllArgsConstructor;
 
 /**
- *
+ * @author tripleJ
  * 여자일 때 체지방량이 어떤 상태인지 알려주는 클래스
  */
 @AllArgsConstructor

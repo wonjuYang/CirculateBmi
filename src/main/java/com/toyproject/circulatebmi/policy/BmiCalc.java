@@ -1,7 +1,10 @@
 package com.toyproject.circulatebmi.policy;
 
 import lombok.AllArgsConstructor;
-
+/**
+ * @author tripleJ
+ *
+ */
 @AllArgsConstructor
 public class BmiCalc {
 

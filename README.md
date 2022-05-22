@@ -19,3 +19,6 @@
 
 ## policy and rule finish
 -> 실제 구현부분 파트 2 완료!
+
+## add comment
+-> 어떤 일을 하는 클래스인지 주석 추가
