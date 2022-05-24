@@ -44,14 +44,14 @@ public class CirculateBmiQueryController {
     }
 
     //특정 사람의 ID를 입력하면 그사람은 정상인지, 비만인지, 미달인지 알려주는 서비스
-    @GetMapping("/api/calc/person/{poserId}")
-    public String JudgeBmiByPersonId(@PathVariable Long persionId,
+    @GetMapping("/api/calc/person/{personId}")
+    public String JudgeBmiByPersonId(@PathVariable Long personId,
                                      @RequestParam GenderType genderType){
 
 
         BmiPolicy policy = BmiPolicyFactory.of(genderType);
-        int height = personService.getHeightOrThrow(persionId);
-        int weight = personService.getWeightOrThrow(persionId);
+        int height = personService.getHeightOrThrow(personId);
+        int weight = personService.getWeightOrThrow(personId);
         float bmi = policy.calcualte(height, weight);
         return policy.judgeRange(bmi);
     }
