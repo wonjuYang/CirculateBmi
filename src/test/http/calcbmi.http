@@ -11,4 +11,4 @@ GET {{host}}/api/calc/person/1?genderType=MAN
 
 
 ### BMI 계산 with personId
-GET {{host}}/api/calc/person/1?genderType=WOMAN
+GET {{host}}/api/calc/person/2?genderType=WOMAN

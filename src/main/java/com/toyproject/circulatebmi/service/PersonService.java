@@ -12,15 +12,15 @@ public class PersonService {
     private final PersonRepository personRepository;
 
     @Transactional
-    public int getHeightOrThrow(Long PersonId){
-        return personRepository.findById(PersonId)
-                .orElseThrow(() -> new RuntimeException())
+    public int getHeightOrThrow(Long personId){
+        return personRepository.findById(personId)
+                .orElseThrow(() -> new IllegalArgumentException())
                 .getHeight();
     }
 
-    public int getWeightOrThrow(Long PersonId){
-        return personRepository.findById(PersonId)
-                .orElseThrow(() -> new RuntimeException())
+    public int getWeightOrThrow(Long personId){
+        return personRepository.findById(personId)
+                .orElseThrow(() -> new IllegalArgumentException())
                 .getWeight();
 
     }
