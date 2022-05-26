@@ -14,13 +14,13 @@ public class PersonService {
     @Transactional
     public int getHeightOrThrow(Long personId){
         return personRepository.findById(personId)
-                .orElseThrow(() -> new IllegalArgumentException())
+                .orElseThrow(() -> new IllegalArgumentException("적절한 입력값이 아닙니다"))
                 .getHeight();
     }
 
     public int getWeightOrThrow(Long personId){
         return personRepository.findById(personId)
-                .orElseThrow(() -> new IllegalArgumentException())
+                .orElseThrow(() -> new IllegalArgumentException("적절한 입력값이 아닙니다"))
                 .getWeight();
 
     }

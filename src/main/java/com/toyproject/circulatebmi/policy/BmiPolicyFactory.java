@@ -1,6 +1,8 @@
 package com.toyproject.circulatebmi.policy;
 
 import com.toyproject.circulatebmi.constants.GenderType;
+import com.toyproject.circulatebmi.exception.BmiException;
+import com.toyproject.circulatebmi.exception.ErrorCode;
 
 public class BmiPolicyFactory {
     private static final ManBmipolicy manBmiPolicy = new ManBmipolicy();
@@ -15,7 +17,7 @@ public class BmiPolicyFactory {
             case WOMAN:
                 return womanBmiPolicy;
             default:
-                return null;
+                throw new BmiException(ErrorCode.INVALID_REQUEST, "해당 genderType에 대한 정책이 존재하지 않습니다.");
         }
     }
 }
